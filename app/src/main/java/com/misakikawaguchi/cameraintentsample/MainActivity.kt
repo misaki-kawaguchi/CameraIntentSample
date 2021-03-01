@@ -71,4 +71,14 @@ class MainActivity : AppCompatActivity() {
         // アクティビティを起動
         startActivityForResult(intent, 200)
     }
+
+    // パーミッション許可後の処理
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        // WRITE_EXTERNAL_STORAGEに対するパーミッションダイアログでかつ許可を選択したなら
+        if(requestCode == 2000 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            // もう一度カメラアプリを起動
+            val ivCamera = findViewById<ImageView>(R.id.ivCamera)
+            onCameraImageClick(ivCamera)
+        }
+    }
 }
