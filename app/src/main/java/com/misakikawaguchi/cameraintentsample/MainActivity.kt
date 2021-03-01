@@ -26,12 +26,10 @@ class MainActivity : AppCompatActivity() {
 
         // カメラアプリからの戻りでかつ撮影成功の場合
         if(requestCode == 200 && resultCode == RESULT_OK) {
-            // 撮影されたビットマップデータを取得
-            val bitmap = data?.getParcelableExtra<Bitmap>("data")
-            // 画像を表示するImageViewを取得
+            // 画像を表示するImageVewを取得
             val ivCamera = findViewById<ImageView>(R.id.ivCamera)
-            // 撮影された画像をImageVIewに設定
-            ivCamera.setImageBitmap(bitmap)
+            // フィールドの画像URIをImageVIewに設定
+            ivCamera.setImageURI(_imageUri)
         }
     }
 
